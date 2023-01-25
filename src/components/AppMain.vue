@@ -2,14 +2,17 @@
 import PokemonList from './pokemon/PokemonList.vue';
 export default {
 name: 'AppMain',
-components: {PokemonList}
+components: {PokemonList},
+props: {
+    pokemons: Array
+}
 };
 
 </script>
 
 <template>
   <main class="container">
-    <PokemonList></PokemonList>
+    <PokemonList :pokemons="pokemons"></PokemonList>
   </main>
 </template>
 
