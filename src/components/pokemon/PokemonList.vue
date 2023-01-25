@@ -1,11 +1,15 @@
 <script>
-// import axios from 'axios'
-import PokemonCard from './PokemonCard.vue'
+import {store} from '../../data/store';
+import PokemonCard from './PokemonCard.vue';
+
+
 export default {
 name: 'PokemonList',
 components: {PokemonCard},
-props: {
-    pokemons: Array
+data() {
+    return {
+        store
+    }
 },
 
 
@@ -17,7 +21,7 @@ props: {
   <section id="pokemon">
     <div class="row g-3 row-cols-3">
         <PokemonCard 
-        v-for="pokemon in pokemons" 
+        v-for="pokemon in store.pokemons" 
         :image="pokemon.imageUrl"
         :number="pokemon.number"
         :name="pokemon.name" 
