@@ -8,7 +8,9 @@ export default {
     components: {AppMain, PokeType},
     data() {
     return {
-        store
+        store,
+        typeFilter: '',
+        apiUri: 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons',
     }
 },
 methods: {
@@ -17,10 +19,15 @@ methods: {
     .then((res) => {
         store.pokemons = res.data.docs;
     })
+  },
+
+  onTypeChange (type){
+    this.typeFilter = type;
+    this.apiUri = `${this.apiUri}?eq[type1]=${this.typeFilter}`;
   }
 },
 created() {
-    this.fetchPokemons(store.apiUri)
+    this.fetchPokemons(this.apiUri)
 }
 };
 
@@ -30,7 +37,7 @@ created() {
   <header class="container d-flex justify-content-center">
     <img id="logo-header" src="./assets/img/logo-pokedex.png" alt="">
   </header>
-  <PokeType></PokeType>
+  <PokeType @change-type="onTypeChange"></PokeType>
   <AppMain ></AppMain>
 </template>
 
