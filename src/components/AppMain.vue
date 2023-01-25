@@ -9,7 +9,7 @@ components: {PokemonList},
 </script>
 
 <template>
-  <main class="container">
+  <main class="container ">
     <PokemonList ></PokemonList>
   </main>
 </template>
